@@ -6,17 +6,18 @@ import org.junit.Test;
 
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import static io.restassured.RestAssured.*;
 
 public class GetRetornaSimulacaoTeste extends BaseTeste {
 
     ArrayList arrayCPF;
-
+    Random rand = new Random();
     static String cpfNotExisting = "00000000000";
 
     @Test
-    public void testSimulacaoRetornaTodosCPFExistentes(){
+    public void testeSimulacaoRetornaTodosCPFExistentes(){
 
         given()
                 .when()
@@ -26,7 +27,7 @@ public class GetRetornaSimulacaoTeste extends BaseTeste {
     }
 
     @Test
-    public void testSimulacaRetornaClientePeloCPF(){
+    public void testeSimulacaRetornaClientePeloCPF(){
         arrayCPF = new ArrayList();
 
         arrayCPF = given()
@@ -36,17 +37,19 @@ public class GetRetornaSimulacaoTeste extends BaseTeste {
                             .extract()
                             .path("cpf");
 
+        int numRand = rand.nextInt(arrayCPF.size());
+
         given()
-                .pathParam("paramCpf", arrayCPF.get(0).toString())
+                .pathParam("paramCpf", arrayCPF.get(numRand).toString())
             .when()
                 .get(EFETUA_OPERACOES_SIMULACAO +  "/{paramCpf}")
             .then()
                 .statusCode(HttpStatus.SC_OK)
-                .body("cpf", is(arrayCPF.get(0).toString()));
+                .body("cpf", is(arrayCPF.get(numRand).toString()));
     }
 
     @Test
-    public void testSimulacaoComCPFNaoExistente(){
+    public void testeSimulacaoComCPFNaoExistente(){
 
         given()
                 .pathParam("paramCpf", cpfNotExisting)

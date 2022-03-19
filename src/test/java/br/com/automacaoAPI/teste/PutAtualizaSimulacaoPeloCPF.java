@@ -11,11 +11,11 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-public class PutUpdateSimulationThroughCPF extends BaseTeste {
+public class PutAtualizaSimulacaoPeloCPF extends BaseTeste {
 
 
     @Test
-    public void testSimulacaoAtualizaClientePeloCPF(){
+    public void testeSimulacaoAtualizaClientePeloCPF(){
 
 
 
@@ -42,7 +42,7 @@ public class PutUpdateSimulationThroughCPF extends BaseTeste {
     }
 
     @Test
-    public void testSimulacaoAtualizaClienteComCPFNaoExistente(){
+    public void testeSimulacaoAtualizaClienteComCPFNaoExistente(){
         Cliente simula = new Cliente(
                 "Jose Pai",
                 "99999999900",
@@ -62,7 +62,7 @@ public class PutUpdateSimulationThroughCPF extends BaseTeste {
     }
 
     @Test
-    public void testSimulacaoAtualizaParcelaClienteParaUm() {
+    public void testeSimulacaoAtualizaParcelaClienteParaUm() {
         Cliente simula = new Cliente(
                 "Jose Pai",
                 retornaCPFClienteExistente(),

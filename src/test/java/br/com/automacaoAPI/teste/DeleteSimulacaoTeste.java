@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Random;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
@@ -12,9 +13,10 @@ import static org.hamcrest.CoreMatchers.is;
 public class DeleteSimulacaoTeste extends BaseTeste {
 
     @Test
-    public void testSimulacaoDeletaClientePeloCPF(){
+    public void testeSimulacaoDeletaClientePeloCPF(){
 
         ArrayList arrayId = new ArrayList();
+        Random rand = new Random();
 
         arrayId = given()
                         .when()
@@ -23,7 +25,9 @@ public class DeleteSimulacaoTeste extends BaseTeste {
                             .extract()
                             .path("id");
 
-        String id = arrayId.get(0).toString();
+
+
+        String id = arrayId.get(rand.nextInt(arrayId.size())).toString();
 
         given()
                 .pathParam("paramId", id)

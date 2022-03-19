@@ -1,4 +1,7 @@
-C:\Projetos\java\Test-API-Rest-assured\src\test\java\util\BaseLocalHost.java
-C:\Projetos\java\Test-API-Rest-assured\src\test\java\br\com\automacaoAPI\model\SimulaCredCPF.java
-C:\Projetos\java\Test-API-Rest-assured\src\test\java\br\com\automacaoAPI\teste\RestricaoCPFTeste.java
-C:\Projetos\java\Test-API-Rest-assured\src\test\java\br\com\automacaoAPI\teste\SimulacoesCPFTeste.java
+E:\Projetos\Java\Test-API-Rest-assured\src\test\java\br\com\automacaoAPI\teste\PostInsereNovaSimulacaoTeste.java
+E:\Projetos\Java\Test-API-Rest-assured\src\test\java\br\com\automacaoAPI\model\Cliente.java
+E:\Projetos\Java\Test-API-Rest-assured\src\test\java\br\com\automacaoAPI\teste\PutUpdateSimulationThroughCPF.java
+E:\Projetos\Java\Test-API-Rest-assured\src\test\java\br\com\automacaoAPI\teste\DeleteSimulacaoTeste.java
+E:\Projetos\Java\Test-API-Rest-assured\src\test\java\br\com\automacaoAPI\teste\GetRetornaSimulacaoTeste.java
+E:\Projetos\Java\Test-API-Rest-assured\src\test\java\br\com\automacaoAPI\teste\BaseTeste.java
+E:\Projetos\Java\Test-API-Rest-assured\src\test\java\br\com\automacaoAPI\teste\GetConsultaRestricaoTeste.java

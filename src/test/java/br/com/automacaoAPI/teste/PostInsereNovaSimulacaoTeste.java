@@ -6,14 +6,18 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
 public class PostInsereNovaSimulacaoTeste extends BaseTeste  {
 
+    Random rand = new Random();
+
     @Test
-    public void testSimulacaoInsereClienteJaExistente(){
+    public void testeSimulacaoInsereClienteJaExistente(){
 
         ArrayList arrayCPF = new ArrayList();
 
@@ -44,12 +48,14 @@ public class PostInsereNovaSimulacaoTeste extends BaseTeste  {
 
 
     @Test
-    public void testSimulacaoInsereNovoCliente(){
+    public void testeSimulacaoInsereNovoCliente(){
 
+        String nome = obtemNomeAleatorio();
+        String cpf = geraCPFAleatorio();
         Cliente simula = new Cliente(
-                "Jose Pai",
-                "98745632123",
-                "JosePai@gmail.com",
+                nome,
+                cpf,
+                 nome + "@gmail.com",
                 new BigDecimal(10000) ,
                 5,
                 false);
@@ -64,11 +70,13 @@ public class PostInsereNovaSimulacaoTeste extends BaseTeste  {
     }
 
     @Test
-    public void testSimulacaoInsereClienteFaltandoCPF(){
+    public void testeSimulacaoInsereClienteFaltandoCPF(){
+
+        String nome = obtemNomeAleatorio();
 
         Cliente simula = new Cliente(
-                "Jose Paii",
-                "JosePaii@gmail.com",
+                nome,
+                nome + "@gmail.com",
                 new BigDecimal(10000) ,
                 5,
                 false);
@@ -79,5 +87,30 @@ public class PostInsereNovaSimulacaoTeste extends BaseTeste  {
             .then()
                 .statusCode(HttpStatus.SC_BAD_REQUEST)
                 .body("erros.cpf", is("CPF não pode ser vazio"));
+    }
+
+    public String obtemNomeAleatorio(){
+
+        List<String> nomes = new ArrayList<>();
+        nomes.add("Joao");
+        nomes.add("Pedro");
+        nomes.add("Silvio");
+        nomes.add("Felipe");
+        nomes.add("Carlos");
+
+        String nomeAleatorio = nomes.get(rand.nextInt(nomes.size())).toString();
+
+        return nomeAleatorio;
+    }
+
+    public String geraCPFAleatorio(){
+        String aleat = "";
+        for (int i = 0; i < 11; i++) {
+            int num = rand.nextInt(10);
+            aleat = aleat + num;
+        }
+
+        String cpfaleatorio = aleat;
+        return cpfaleatorio;
     }
 }
